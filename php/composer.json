@@ -1,0 +1,13 @@
+{
+  "name": "tingee/php-sample",
+  "description": "Sample usage of Tingee PHP SDK",
+  "require": {
+    "tingee/sdk": "*@dev"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../bindings/php"
+    }
+  ]
+}

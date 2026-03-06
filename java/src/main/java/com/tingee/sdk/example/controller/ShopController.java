@@ -25,25 +25,20 @@ public class ShopController {
 
     @GetMapping
     public ResponseEntity<?> getShops(
-            @RequestParam(defaultValue = "0") Integer skipCount,
-            @RequestParam(defaultValue = "10") Integer maxResultCount) {
+            @RequestParam(name = "skipCount", defaultValue = "0") Integer skipCount,
+            @RequestParam(name = "maxResultCount", defaultValue = "10") Integer maxResultCount) {
         
-        try {
-           OpenApiGetPagingMerchantsDto request = new OpenApiGetPagingMerchantsDto();
-            request.setSkipcount(skipCount.doubleValue());
-            request.setMaxresultcount(maxResultCount.doubleValue());
 
-            TingeeApiResponse<PagedResultDto<MerchantDto>> result = tingeeClient.v1.merchantGetPaging(request);
+           // Required fields passed via constructor (compile-time enforced)
+           OpenApiGetPagingMerchantsDto request = new OpenApiGetPagingMerchantsDto(skipCount, maxResultCount);
+
+
+            TingeeApiResponse<PagedResultDto<MerchantDto>> result = tingeeClient.merchant.getPaging(request);
             
             if (result.isSuccess()) {
                 return ResponseEntity.ok(result.getData().getItems());
             } else {
                 return ResponseEntity.badRequest().body(result.getMessage());
             }
-        } catch (Exception e) {
-            TingeeApiResponse<Object> errorResponse = new TingeeApiResponse<>();
-            errorResponse.setMessage(e.getMessage());
-            return ResponseEntity.internalServerError().body(errorResponse);
-        }
     }
 }

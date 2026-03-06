@@ -30,7 +30,7 @@ async function exampleGetShopPaging() {
 
     //   console.log("Lấy danh sách shop thành công!");
     //   console.log("Total it,ems:", result.data);
-const _accounts = await client.v1.merchantGetPaging({maxResultCount: 10, skipCount: 0})
+// const _accounts = await client.transaction.getPaging()
   } catch (error) {
     console.error("Error:", error);
   }

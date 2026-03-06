@@ -17,9 +17,7 @@ public class TingeeConfig {
 
     @Bean
     public TingeeClient tingeeClient() {
-        return TingeeClient.builder()
-                .clientId(clientId)
-                .secretKey(secretKey)
+        return TingeeClient.builder(secretKey, clientId)
                 .environment(TingeeEnvironment.UAT)
                 .timeout(90000)
                 .build();

@@ -30,16 +30,16 @@ var request = new OpenApiGetPagingMerchantsDto
     MaxResultCount = 10
 };
 
-Console.WriteLine("Executing client.V1.MerchantGetPagingAsync (expects Invalid Signature if using mock credentials)...");
+Console.WriteLine("Executing client.Merchant.GetPagingAsync...");
 try
 {
-    // All API methods are now namespaced under client.V1.*
-    var response = await client.V1.MerchantGetPagingAsync(request);
+    // API methods are namespaced under group properties: client.Bank, client.Merchant, client.Shop, etc.
+    var response = await client.Merchant.GetPagingAsync(request);
     Console.WriteLine($"Code={response.Code}, Message={response.Message}");
     if (response.Data != null)
     {
         Console.WriteLine($"Total Count: {response.Data.TotalCount}");
-        Console.WriteLine($"Items Count: {response.Data.Items.Count}");
+        Console.WriteLine($"Items Count: {response.Data.Items?.Count}");
     }
 }
 catch (Exception ex)

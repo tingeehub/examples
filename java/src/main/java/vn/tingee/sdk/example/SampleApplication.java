@@ -1,4 +1,4 @@
-package com.tingee.sdk.example;
+﻿package vn.tingee.sdk.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,3 +10,4 @@ public class SampleApplication {
         SpringApplication.run(SampleApplication.class, args);
     }
 }
+

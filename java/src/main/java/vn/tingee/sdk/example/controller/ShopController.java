@@ -1,10 +1,10 @@
-package com.tingee.sdk.example.controller;
+﻿package vn.tingee.sdk.example.controller;
 
-import com.tingee.sdk.TingeeClient;
-import com.tingee.sdk.model.MerchantDto;
-import com.tingee.sdk.model.OpenApiGetPagingMerchantsDto;
-import com.tingee.sdk.model.PagedResultDto;
-import com.tingee.sdk.types.TingeeApiResponse;
+import vn.tingee.sdk.TingeeClient;
+import vn.tingee.sdk.model.MerchantDto;
+import vn.tingee.sdk.model.OpenApiGetPagingMerchantsDto;
+import vn.tingee.sdk.model.PagedResultDto;
+import vn.tingee.sdk.types.TingeeApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,3 +42,4 @@ public class ShopController {
             }
     }
 }
+

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3695d1ab677fbcdda987f8014f43eadf",
+    "content-hash": "320776381e77086d1ceea43908f18c8e",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -603,12 +603,18 @@
             "time": "2022-01-02T09:55:41+00:00"
         },
         {
-            "name": "tingee/sdk",
-            "version": "dev-dev",
+            "name": "tingee/sdk-php",
+            "version": "0.1.0-beta.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tingeehub/tingee-php.git",
+                "reference": "b5b1d185430c3e529308e325a5adce59ad9669da"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../bindings/php",
-                "reference": "e06cf370cfd2dce9260cee1e93fc4ddc25da415a"
+                "type": "zip",
+                "url": "https://api.github.com/repos/tingeehub/tingee-php/zipball/b5b1d185430c3e529308e325a5adce59ad9669da",
+                "reference": "b5b1d185430c3e529308e325a5adce59ad9669da",
+                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -625,20 +631,35 @@
                     "src/Types/Dtos/Generated.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "ISC"
             ],
+            "authors": [
+                {
+                    "name": "Tingee",
+                    "email": "developer@heno.vn",
+                    "homepage": "https://tingee.vn",
+                    "role": "Developer"
+                }
+            ],
             "description": "Tingee Open API SDK for PHP",
-            "transport-options": {
-                "relative": true
-            }
+            "homepage": "https://developers.tingee.vn",
+            "support": {
+                "chat": "https://t.me/tingeesupport",
+                "docs": "https://developers.tingee.vn",
+                "email": "developer@heno.vn",
+                "issues": "https://github.com/tingeehub/tingee-php/issues",
+                "source": "https://github.com/tingeehub/tingee-php"
+            },
+            "time": "2026-03-07T08:40:42+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "tingee/sdk": 20
+        "tingee/sdk-php": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

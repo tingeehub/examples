@@ -337,9 +337,7 @@ function handleWebhook(TingeeClient $client): void
     $timestamp = $_SERVER['HTTP_X_REQUEST_TIMESTAMP'] ?? '';
     $rawBody   = file_get_contents('php://input');
 
-    // ✅ Xác minh chữ ký — truyền TingeeWebhookBody đã parse
-    $body   = TingeeWebhookBody::fromArray(json_decode($rawBody, true));
-    $result = $client->verifyWebhookSignature($signature, $timestamp, $body);
+    $result = $client->verifyWebhookSignature($signature, $timestamp, $rawBody);
 
     header('Content-Type: application/json');
     if (!$result->isValid()) {
@@ -348,13 +346,14 @@ function handleWebhook(TingeeClient $client): void
         return;
     }
 
-    // Webhook hợp lệ — xử lý nghiệp vụ
+    $body = json_decode($rawBody, true);
     echo "✅ Webhook hợp lệ!\n";
-    echo "   clientId:        {$body->clientId}\n";
-    echo "   transactionCode: {$body->transactionCode}\n";
-    echo "   amount:          {$body->amount}\n";
-    echo "   bank:            {$body->bank}\n";
-    echo "   accountNumber:   {$body->accountNumber}\n";
+    echo "   clientId:        {$body['clientId']}\n";
+    echo "   transactionCode: {$body['transactionCode']}\n";
+    echo "   amount:          {$body['amount']}\n";
+    echo "   bank:            {$body['bank']}\n";
+    echo "   accountNumber:   {$body['accountNumber']}\n";
+    echo "   transactionDate: {$body['transactionDate']}\n";
 
     // TODO: lưu DB, cập nhật đơn hàng, ...
     http_response_code(200);

@@ -394,13 +394,9 @@ function startWebhookServer() {
       const timestamp = String(req.headers['x-request-timestamp'] || '')
 
       // ✅ Xác minh chữ ký — truyền raw JSON string, SDK tự parse
-      const result = client.verifyWebhookSignature({
-        signature,
-        timestamp,
-        body: rawBody,
-      })
+      const result = client.verifyWebhookSignature(signature, timestamp, rawBody)
 
-      if (isSuccessResponse(result)) {
+      if (result.code !== '00') {
         console.warn('❌ Webhook không hợp lệ:', result.code, result.message)
         res.writeHead(401, { 'Content-Type': 'application/json' })
         res.end(JSON.stringify({ code: result.code, message: result.message }))

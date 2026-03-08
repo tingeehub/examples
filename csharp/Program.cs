@@ -179,12 +179,7 @@ app.MapPost("/webhook/tingee", async (TingeeClient client, HttpContext ctx) =>
     ctx.Request.Body.Position = 0;
 
     // ── 1. Xác minh chữ ký ────────────────────────────────────────────────────
-    var result = client.VerifyWebhookSignature(new()
-    {
-        Signature = signature,
-        Timestamp = timestamp,
-        BodyJson  = rawBody,
-    });
+    var result = client.VerifyWebhookSignature(signature, timestamp, rawBody);
 
     if (!result.IsValid)
     {
